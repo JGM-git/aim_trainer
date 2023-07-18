@@ -26,5 +26,7 @@
   <h5>🎨 Game Design 🎨</h5>
   <img src="https://img.shields.io/badge/diagrams.net-000000?style=flat-square&logo=diagramsdotnet&logoColor=White"/>
   <br>
-  
+  <br>
+  <h4>Basic Design</h4>
+  <img width="543" alt="KakaoTalk_20230718_192420392" src="https://github.com/JGM-git/aim_trainer/assets/65993764/626e45b7-7293-4447-9bb2-304ffb4ab07c">
 </div>
