@@ -6,8 +6,9 @@ public class GunFire : MonoBehaviour
 {
     public Camera camera;
     public AudioSource gunsound;
+    GameManager gameManager;
 
-    public void shoot()
+    public void Shoot()
     {
         RaycastHit hit;
         if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit))
@@ -19,19 +20,20 @@ public class GunFire : MonoBehaviour
         }
     }
 
-
-    // Start is called before the first frame update
     void Start()
     {
-        
+        // 씬에서 GameManager 컴포넌트를 가진 오브젝트를 찾는 메소드
+        gameManager = GameObject.FindObjectOfType<GameManager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetMouseButtonDown(0))
         {
-            shoot();
+            Shoot();
+            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            // GameManager 의 ScoreUp() 메소드를 실행해야 함
+            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         }
     }
 }
