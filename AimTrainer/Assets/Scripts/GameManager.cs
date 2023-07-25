@@ -9,8 +9,9 @@ public class GameManager : MonoBehaviour
     public TMP_Text accuracyText;
     public TMP_Text timeText;
     public TMP_Text readyText;
-
-    public GameObject Target;
+    public GameObject targetPrefab;
+    public GunFire gf;
+    public FirstPersonMouseMove fpmm;
 
     StageInfo currentStageInfo;
 
@@ -22,30 +23,38 @@ public class GameManager : MonoBehaviour
     private int hitCount = 0;
     [SerializeField]
     private int shootCount = 0;
-    [SerializeField]
-    private int score = 0;
-    [SerializeField]
-    private int hitScore = 100;
+    public int score = 0;
 
     [SerializeField]
     private bool isStarted = false;
 
     void Start()
     {
+        gf = FindObjectOfType<GunFire>();
+        fpmm = FindObjectOfType<FirstPersonMouseMove>();
         //currentStageInfo = GameObject.FindObjectOfType<StageInfo>();
-        //StartCoroutine(Ready());
+        StartCoroutine(Ready());
+        SpawnTarget();
     }
 
     void Update()
     {
-        /* 게임 제한시간
+ 
         if(!isStarted) return;
 
         if(time <= 60) isStarted = true;
 
         time -= Time.deltaTime;
         timeText.text = Mathf.Floor(time / 60) + ":" + Mathf.Floor(time % 60);
-        */
+        
+        if (Mathf.Floor(time / 60) == 0 && Mathf.Floor(time % 60) == 0)
+        {
+            isStarted = false;
+            gf.enabled = false;
+            fpmm.enabled = false;
+        }
+        
+
     }
 
     IEnumerator Ready()
@@ -58,10 +67,13 @@ public class GameManager : MonoBehaviour
         readyText.text = "1";
         yield return new WaitForSeconds(1f);
         readyText.gameObject.SetActive(false);
+        gf.enabled = true;
+        fpmm.enabled = true;
+        
         isStarted = true;
     }
 
-    void SpawnTarget()
+    public void SpawnTarget()
     {
         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         // 타겟을 랜덤한 위치에 스폰해야 함
@@ -69,11 +81,20 @@ public class GameManager : MonoBehaviour
         // 타겟이 부서지는 순간 스폰할 건지 둘 중에 하나 구현해 보기
         // 이 메소드를 언제 어디서 실행할 건지도 정하기
         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        Vector3 targetTrans = new Vector3(Random.Range(-20f, 20f), Random.Range(2f, 10f), Random.Range(-5f, 20f));
+        Quaternion targetRot = Quaternion.Euler(0f, 0f, 0f);
+        Instantiate(targetPrefab, targetTrans, targetRot);
     }
 
     public void ScoreUp()
     {
         score += 100;
         scoreText.text = string.Format("Score : {0}", score);
+    }
+
+    public void AccuracyCheck()
+    {
+        accuracy = gf.count * 100 / gf.shootcnt;
+        accuracyText.text = "Accuarcy : " + accuracy + "%";
     }
 }
