@@ -12,6 +12,11 @@ public class GameManager : MonoBehaviour
     public GameObject targetPrefab;
     public GunFire gf;
     public FirstPersonMouseMove fpmm;
+    public Level lev;
+    public Gun gnm;
+    public GameObject classic;
+    public GameObject ghost;
+    public GameObject sheriff;
 
     StageInfo currentStageInfo;
 
@@ -28,13 +33,33 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private bool isStarted = false;
 
+   
+
     void Start()
     {
-        gf = FindObjectOfType<GunFire>();
+        lev = FindObjectOfType<Level>();
+        gnm = FindObjectOfType<Gun>();
+        
         fpmm = FindObjectOfType<FirstPersonMouseMove>();
         //currentStageInfo = GameObject.FindObjectOfType<StageInfo>();
+        
         StartCoroutine(Ready());
         SpawnTarget();
+        if (gnm.GunMode == 0)
+        {
+            classic.SetActive(true);
+        }
+
+        if (gnm.GunMode == 1)
+        {
+            ghost.SetActive(true);
+        }
+
+        if (gnm.GunMode == 2)
+        {
+            sheriff.SetActive(true);
+        }
+        gf = FindObjectOfType<GunFire>();
     }
 
     void Update()
@@ -69,7 +94,6 @@ public class GameManager : MonoBehaviour
         readyText.gameObject.SetActive(false);
         gf.enabled = true;
         fpmm.enabled = true;
-        
         isStarted = true;
     }
 
