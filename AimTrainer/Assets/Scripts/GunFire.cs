@@ -12,6 +12,8 @@ public class GunFire : MonoBehaviour
 
     public void Shoot()
     {
+        transform.localEulerAngles = new Vector3(-15f, 3f, 0f);
+        StartCoroutine(ShootAction());
         shootcnt++;
         RaycastHit hit;
         if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit))
@@ -25,9 +27,24 @@ public class GunFire : MonoBehaviour
             } 
         }
         gameManager.AccuracyCheck();
+       
     }
 
-    
+    IEnumerator ShootAction()
+    {
+        yield return new WaitForSeconds(0.05f);
+        transform.localEulerAngles = new Vector3(-12f, 3f, 0f);
+        yield return new WaitForSeconds(0.03f);
+        transform.localEulerAngles = new Vector3(-9f, 3f, 0f);
+        yield return new WaitForSeconds(0.03f);
+        transform.localEulerAngles = new Vector3(-6f, 3f, 0f);
+        yield return new WaitForSeconds(0.03f);
+        transform.localEulerAngles = new Vector3(-3f, 3f, 0f);
+        yield return new WaitForSeconds(0.03f);
+        transform.localEulerAngles = new Vector3(0f, 3f, 0f);
+
+    }
+
     void Start()
     {
         // 씬에서 GameManager 컴포넌트를 가진 오브젝트를 찾는 메소드
