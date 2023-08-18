@@ -268,7 +268,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   getLevel: {fileID: 0}
+  getGunMode: {fileID: 0}
   lv: 0
+  gun: 0
 --- !u!114 &459136014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -752,7 +754,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   getLevel: {fileID: 0}
+  getGunMode: {fileID: 0}
   lv: 0
+  gun: 0
 --- !u!114 &819292904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1374,7 +1378,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   getLevel: {fileID: 0}
+  getGunMode: {fileID: 0}
   lv: 0
+  gun: 0
 --- !u!1 &1735388560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1522,7 +1528,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   getLevel: {fileID: 0}
+  getGunMode: {fileID: 0}
   lv: 0
+  gun: 0
 --- !u!1 &1813528551
 GameObject:
   m_ObjectHideFlags: 0
@@ -1804,7 +1812,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   getLevel: {fileID: 0}
+  getGunMode: {fileID: 0}
   lv: 0
+  gun: 0
 --- !u!1 &1959842453
 GameObject:
   m_ObjectHideFlags: 0
@@ -2232,7 +2242,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   getLevel: {fileID: 0}
+  getGunMode: {fileID: 0}
   lv: 0
+  gun: 0
 --- !u!114 &2115896563
 MonoBehaviour:
   m_ObjectHideFlags: 0

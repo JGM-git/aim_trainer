@@ -9,26 +9,27 @@ public class GunFire : MonoBehaviour
     public GameManager gameManager;
     public int count = 0;
     public int shootcnt = 0;
+    public RaycastHit hit;
 
     public void Shoot()
     {
         transform.localEulerAngles = new Vector3(-15f, 3f, 0f);
         StartCoroutine(ShootAction());
         shootcnt++;
-        RaycastHit hit;
         if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit))
         {
             if (hit.transform.tag == "Target")
             {
                 Destroy(hit.transform.gameObject);
-                gameManager.SpawnTarget();
                 gameManager.ScoreUp();
                 count++;
-            } 
+            }
         }
         gameManager.AccuracyCheck();
        
     }
+
+
 
     IEnumerator ShootAction()
     {

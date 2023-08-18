@@ -19,21 +19,21 @@ public class ModeSelect : MonoBehaviour
     {
         lv = 0;
         getLevel.level = lv;
-        SceneManager.LoadScene("Select");
+        SceneManager.LoadScene("GunSelect");
     }
 
     public void normal()
     {
         lv = 1;
         getLevel.level = lv;
-        SceneManager.LoadScene("Select");
+        SceneManager.LoadScene("GunSelect");
     }
     
     public void hard()
     {
         lv = 2;
         getLevel.level = lv;
-        SceneManager.LoadScene("Select");
+        SceneManager.LoadScene("GunSelect");
     }
 
     public void classic()

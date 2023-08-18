@@ -642,7 +642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17295b46f3a7e0141a6983c3472a6752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSpeed: 1
+  turnSpeed: 0.3
 --- !u!1001 &988601812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2003,6 +2003,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 963194227}
     - target: {fileID: 7421273205956033320, guid: cd8ce18d2ac98374ca2c0f055f6637e0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421273205956033320, guid: cd8ce18d2ac98374ca2c0f055f6637e0, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 185919692}
@@ -2078,7 +2082,7 @@ PrefabInstance:
       objectReference: {fileID: 963194227}
     - target: {fileID: 4892825100744666567, guid: 0c31e9e830c8042498e30e5727b62303, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4892825100744666567, guid: 0c31e9e830c8042498e30e5727b62303, type: 3}
       propertyPath: gameManager
@@ -2198,6 +2202,10 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 2634850513882119364, guid: dbca8811ca688374eafa82169573a3e3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2634850513882119364, guid: dbca8811ca688374eafa82169573a3e3, type: 3}
       propertyPath: gameManager
       value: 

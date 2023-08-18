@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     public GameObject classic;
     public GameObject ghost;
     public GameObject sheriff;
+    private int t = 60;
+    public GameObject targetClone;
+
 
     StageInfo currentStageInfo;
 
@@ -44,7 +47,6 @@ public class GameManager : MonoBehaviour
         //currentStageInfo = GameObject.FindObjectOfType<StageInfo>();
         
         StartCoroutine(Ready());
-        SpawnTarget();
         if (gnm.GunMode == 0)
         {
             classic.SetActive(true);
@@ -95,6 +97,59 @@ public class GameManager : MonoBehaviour
         gf.enabled = true;
         fpmm.enabled = true;
         isStarted = true;
+        SpawnTarget();
+    }
+
+
+    IEnumerator Easy()
+    {
+        while (t > 0)
+        {
+            yield return new WaitForSeconds(5f);
+            if (targetClone == true)
+            {
+                Destroy(targetClone);
+                SpawnTarget();
+            }
+            else 
+            {
+                SpawnTarget();
+            }
+            t -= 2;
+        }
+    }
+
+    IEnumerator Normal()
+    {
+        while (t > 0)
+        {
+            yield return new WaitForSeconds(3f);
+            if (targetClone == true)
+            {
+                Destroy(targetClone);
+                SpawnTarget();
+            }
+            else 
+            {
+                SpawnTarget();
+            }
+        }
+    }
+
+    IEnumerator Hard()
+    {
+        while (t > 0)
+        {
+            yield return new WaitForSeconds(1f);
+            if (targetClone == true)
+            {
+                Destroy(targetClone);
+                
+            }
+            Vector3 targetTrans = new Vector3(Random.Range(-20f, 20f), Random.Range(2f, 10f), Random.Range(-5f, 20f));
+            Quaternion targetRot = Quaternion.Euler(0f, 0f, 0f);
+            targetClone = Instantiate(targetPrefab, targetTrans, targetRot);
+        }
     }
 
     public void SpawnTarget()
@@ -107,7 +162,20 @@ public class GameManager : MonoBehaviour
         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         Vector3 targetTrans = new Vector3(Random.Range(-20f, 20f), Random.Range(2f, 10f), Random.Range(-5f, 20f));
         Quaternion targetRot = Quaternion.Euler(0f, 0f, 0f);
-        Instantiate(targetPrefab, targetTrans, targetRot);
+        targetClone = Instantiate(targetPrefab, targetTrans, targetRot);
+
+        if (lev.level == 0)
+        {
+            StartCoroutine(Easy());
+        }
+        else if (lev.level == 1)
+        {
+            StartCoroutine(Normal());
+        }
+        else
+        {
+            StartCoroutine(Hard());
+        }
     }
 
     public void ScoreUp()
