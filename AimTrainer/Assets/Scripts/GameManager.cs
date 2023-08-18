@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
     public GameObject classic;
     public GameObject ghost;
     public GameObject sheriff;
-    private int t = 60;
     public GameObject targetClone;
 
 
@@ -103,7 +102,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator Easy()
     {
-        while (t > 0)
+        while (true)
         {
             yield return new WaitForSeconds(5f);
             if (targetClone == true)
@@ -115,13 +114,12 @@ public class GameManager : MonoBehaviour
             {
                 SpawnTarget();
             }
-            t -= 2;
         }
     }
 
     IEnumerator Normal()
     {
-        while (t > 0)
+        while (true)
         {
             yield return new WaitForSeconds(3f);
             if (targetClone == true)
@@ -138,17 +136,14 @@ public class GameManager : MonoBehaviour
 
     IEnumerator Hard()
     {
-        while (t > 0)
+        while (true)
         {
             yield return new WaitForSeconds(1f);
             if (targetClone == true)
             {
-                Destroy(targetClone);
-                
+                Destroy(targetClone);                
             }
-            Vector3 targetTrans = new Vector3(Random.Range(-20f, 20f), Random.Range(2f, 10f), Random.Range(-5f, 20f));
-            Quaternion targetRot = Quaternion.Euler(0f, 0f, 0f);
-            targetClone = Instantiate(targetPrefab, targetTrans, targetRot);
+            SpawnTarget() ;
         }
     }
 
